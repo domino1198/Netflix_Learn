@@ -1,29 +1,39 @@
 import * as React from 'react';
 import styles from './styles';
-import { View, Text, Image, FlatList } from 'react-native';
-// import category from '../../assets/data/category';
-
-// const firstCategory = category.items[0];
+import { Image, FlatList } from 'react-native';
+import { View, Text, } from '../Themed';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 interface IcategoryData {
-    category:{
+    category: {
         id: string;
         title: string;
         movies: {
             id: string;
             poster: string;
-        } [];
-}
+        }[];
+    }
 }
 
 const HomeCategory = (props: IcategoryData) => {
+    const navigation = useNavigation();
     const { category } = props;
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{category.title}</Text>
             <FlatList
                 data={category.movies}
-                renderItem={({ item }) => <Image style={styles.image} source={{ uri: item.poster }} />}
+                renderItem={({ item }) => (
+                    <View>
+                        <Image style={styles.image} source={{ uri: item.poster }} />
+                        <TouchableOpacity onPress={() => navigation.navigate("Serial")}>
+                            <Text>
+                                перейти
+                        </Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
                 horizontal />
         </View>
     );

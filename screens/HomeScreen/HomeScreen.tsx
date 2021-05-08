@@ -1,8 +1,9 @@
 import * as React from 'react';
 import styles from './styles';
-import { View, Text, Image, FlatList } from 'react-native';
+import {FlatList } from 'react-native';
 import category from '../../assets/data/category';
-import HomeCategory from "../../components/HomeCategory"
+import HomeCategory from "../../components/HomeCategory";
+import { View,} from '../../components/Themed';
 
 
 const HomePage = () => {
